@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Noughts &amp; Crosses: Tic Tac Toe powered by Jev</title>
+    <meta name="description" content="Tic Tac Toe powered by Jev" />
+    <meta name="author" content="Swaroop Patil" />
+    <link rel="canonical" href="%SITE_URL%/" />
+    <meta name="theme-color" content="#6d4f36" />
+    <meta name="color-scheme" content="light dark" />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="preload" href="/fonts/caveat.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/patrickhand.woff2" as="font" type="font/woff2" crossorigin />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Noughts &amp; Crosses" />
+    <meta property="og:title" content="Noughts &amp; Crosses" />
+    <meta
+      property="og:description"
+      content="Probably the least useful thing you can build with Jev."
+    />
+    <meta property="og:url" content="%SITE_URL%/" />
+    <meta property="og:image" content="%SITE_URL%/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Noughts &amp; Crosses: a notebook page with a finished game of tic-tac-toe."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:creator" content="@swarooppatilx" />
+    <meta name="twitter:title" content="Noughts &amp; Crosses" />
+    <meta
+      name="twitter:description"
+      content="Probably the least useful thing you can build with Jev."
+    />
+    <meta name="twitter:image" content="%SITE_URL%/og.png" />
+    <meta
+      name="twitter:image:alt"
+      content="Noughts &amp; Crosses: a notebook page with a finished game of tic-tac-toe."
+    />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Noughts & Crosses",
+        "alternateName": "OXOX",
+        "url": "%SITE_URL%/",
+        "description": "Tic Tac Toe powered by Jev",
+        "applicationCategory": "GameApplication",
+        "operatingSystem": "Any",
+        "isAccessibleForFree": true,
+        "author": {
+          "@type": "Person",
+          "name": "Swaroop Patil",
+          "url": "https://github.com/swarooppatilx",
+          "sameAs": ["https://github.com/swarooppatilx", "https://x.com/swarooppatilx"]
+        },
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      }
+    </script>
+
+    <style>
+      body {
+        margin: 0;
+        background: #6d4f36;
+      }
+      .seo {
+        max-width: 42rem;
+        margin: 0 auto;
+        padding: 2rem 1.25rem;
+        color: #f6f0e1;
+        font:
+          1.15rem/1.5 "Patrick Hand",
+          "Segoe UI",
+          sans-serif;
+      }
+      .seo h1,
+      .seo h2 {
+        font-family: "Caveat", cursive;
+        line-height: 1.1;
+      }
+      .seo a {
+        color: #ffd9a8;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <main class="seo">
+        <h1>Noughts &amp; Crosses</h1>
+        <p>Tic Tac Toe powered by Jev. Probably the least useful thing you can build with Jev.</p>
+        <p>
+          You play crosses against Jev, an AI model, in a five-game match on a sheet of notebook
+          paper. If Jev is unavailable, a minimax bot plays instead. Turn on JavaScript to play.
+        </p>
+      </main>
+    </div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
