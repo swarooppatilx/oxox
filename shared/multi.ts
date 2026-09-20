@@ -18,6 +18,7 @@ export const cleanPlayerName = (raw: string): string => draftPlayerName(raw).tri
 
 export const CHAT_MAX_LENGTH = 160;
 export const CHAT_HISTORY = 50;
+export const QUICK_REPLIES = ["gg", "Nice move!", "Oops", "Rematch?"] as const;
 
 export const MOVE_TIMEOUT_MS = 60_000;
 export const DISCONNECT_GRACE_MS = 30_000;

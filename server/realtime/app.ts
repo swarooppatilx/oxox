@@ -2,7 +2,7 @@ import { randomUUID } from "node:crypto";
 
 import { createBackend, type Backend } from "@server/backend/index";
 import { publicIdOf, type Identity } from "@server/identity";
-import { moderateChatText } from "@server/moderation";
+import { createModerator } from "@server/moderation";
 import { createRateLimiter } from "@server/rateLimit";
 import { createHub, type Receiver } from "@server/realtime/hub";
 import { parseCommand, type Command } from "@server/realtime/protocol";
@@ -57,6 +57,7 @@ export function createWsApp(options: WsAppOptions = {}): WsApp {
   const identified = new Map<string, Conn>();
   const floodLimit = createRateLimiter(MESSAGES_PER_MINUTE);
   const chatLimit = createRateLimiter(CHATS_PER_MINUTE);
+  const moderate = createModerator(process.env.TYPESAFE_API_KEY || undefined);
   let closed = false;
 
   const send = (conn: Conn, message: ServerMessage): void => {
@@ -196,7 +197,7 @@ export function createWsApp(options: WsAppOptions = {}): WsApp {
           } else if (chatLimit(conn.id) > 0) {
             sendError(conn, "chat_limited", "Slow down a little.");
           } else {
-            const { text, moderated } = moderateChatText(command.text);
+            const { text, moderated } = await moderate(command.text);
             settle(conn, await service.chat(roomId, identity.id, text, moderated));
           }
         });

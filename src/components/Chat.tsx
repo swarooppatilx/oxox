@@ -1,6 +1,6 @@
 import { useEffect, useId, useRef, useState } from "react";
 
-import { CHAT_MAX_LENGTH, type ChatMessage, type MultiPlayer } from "@shared/multi";
+import { CHAT_MAX_LENGTH, QUICK_REPLIES, type ChatMessage, type MultiPlayer } from "@shared/multi";
 
 import { MultiAvatar } from "@/components/MultiAvatar";
 
@@ -15,7 +15,6 @@ interface ChatProps {
 
 const NEAR_BOTTOM = 56;
 const COUNTER_FROM = CHAT_MAX_LENGTH - 40;
-const QUICK_REPLIES = ["gg", "Nice move!", "Oops", "Rematch?"];
 
 const lastSeq = (messages: ChatMessage[]): number => messages[messages.length - 1]?.seq ?? 0;
 
@@ -135,9 +134,6 @@ export function Chat({ players, messages, yourId, opponentName, error, onSend }:
                   <span className="chat-body">
                     {!mine && <span className="chat-who">{author?.name ?? "Someone"}</span>}
                     {removed ? "(message removed)" : message.text}
-                    {message.moderated && !removed && mine && (
-                      <span className="chat-note"> · filtered</span>
-                    )}
                   </span>
                 </p>
               );
