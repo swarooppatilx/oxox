@@ -1,4 +1,4 @@
-import type { Line } from "./game.js";
+import type { Line } from "#shared/game";
 
 function noise(seed: number, channel: number): number {
   const x = Math.sin(seed * 127.1 + channel * 311.7) * 43758.5453;

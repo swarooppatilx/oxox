@@ -1,6 +1,6 @@
 import type { KeyboardEvent, Ref } from "react";
 
-import type { Cell as CellValue } from "@shared/game";
+import type { Cell as CellValue } from "#shared/game";
 
 import { CrossMark, NoughtMark } from "@/components/Marks";
 import { cellLabel } from "@/copy";
@@ -13,6 +13,7 @@ interface CellProps {
   drawing: boolean;
   pulse: boolean;
   disabled: boolean;
+  ghost: "X" | "O";
   focusable: boolean;
   register: Ref<HTMLButtonElement>;
   onPlay: () => void;
@@ -28,6 +29,7 @@ export function Cell({
   drawing,
   pulse,
   disabled,
+  ghost,
   focusable,
   register,
   onPlay,
@@ -37,7 +39,7 @@ export function Cell({
   return (
     <button
       ref={register}
-      className={`cell ${isLastMove ? "last" : ""} ${pulse ? "pulse" : ""}`}
+      className={`cell ghost-${ghost} ${isLastMove ? "last" : ""} ${pulse ? "pulse" : ""}`}
       tabIndex={focusable ? 0 : -1}
       aria-disabled={disabled}
       aria-label={cellLabel(index, mark)}

@@ -1,14 +1,6 @@
-import {
-  isDraw,
-  legalMoves,
-  other,
-  play,
-  winnerOf,
-  type Board,
-  type Mark,
-} from "./game.js";
-import type { Mood, MoveResult } from "./moves.js";
-import { reasonFor } from "./reason.js";
+import { isDraw, legalMoves, other, play, winnerOf, type Board, type Mark } from "#shared/game";
+import type { Mood, MoveResult } from "#shared/moves";
+import { reasonFor } from "#shared/reason";
 
 const scores = new Map<string, number>();
 
@@ -44,9 +36,7 @@ export function bestMoves(board: Board, ai: Mark): readonly number[] {
     score: minimax(play(board, index, ai), other(ai), ai),
   }));
   const bestScore = Math.max(...scored.map((move) => move.score));
-  return scored
-    .filter((move) => move.score === bestScore)
-    .map((move) => move.index);
+  return scored.filter((move) => move.score === bestScore).map((move) => move.index);
 }
 
 interface MinimaxOptions {

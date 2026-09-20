@@ -1,4 +1,4 @@
-import type { Mark } from "@shared/game";
+import type { Mark } from "#shared/game";
 
 export const HUMAN: Mark = "X";
 export const OPPONENT: Mark = "O";

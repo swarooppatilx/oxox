@@ -1,4 +1,4 @@
-import { crossPaths, noughtPath } from "@shared/markGeometry";
+import { crossPaths, noughtPath } from "#shared/markGeometry";
 
 import { DrawingHand } from "@/components/Pencil";
 

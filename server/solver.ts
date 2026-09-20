@@ -1,13 +1,13 @@
-import type { Board, Mark } from "../shared/game.js";
-import { bestMoves, minimaxMove } from "../shared/minimax.js";
-import { toReply, type MoveReply } from "../shared/moves.js";
-import { reasonFor } from "../shared/reason.js";
-import { createAskJev } from "./jev.js";
+import type { Board, Mark } from "#shared/game";
+import { bestMoves, minimaxMove } from "#shared/minimax";
+import { toReply, type MoveReply } from "#shared/moves";
+import { reasonFor } from "#shared/reason";
+import { createAskJev } from "#server/jev";
 
 const JEV_TIMEOUT_MS = 2500;
 const JEV_COOLDOWN_MS = 15_000;
 
-const pick = <T,>(items: readonly T[]): T | undefined =>
+const pick = <T>(items: readonly T[]): T | undefined =>
   items.length > 0 ? items[Math.floor(Math.random() * items.length)] : undefined;
 
 export function createSolver(apiKey: string | undefined) {

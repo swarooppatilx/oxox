@@ -1,7 +1,7 @@
 {
   "name": "Noughts & Crosses",
   "short_name": "Noughts & Crosses",
-  "description": "Tic Tac Toe powered by Jev",
+  "description": "Play Tic Tac Toe on notebook paper. Beat Jev, an AI opponent, or invite a friend to a live online match. Free, no sign-up.",
   "id": "/",
   "start_url": "/",
   "scope": "/",

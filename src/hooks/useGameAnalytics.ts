@@ -1,6 +1,6 @@
 import { useEffect, useEffectEvent } from "react";
 
-import { isSeriesOver, seriesResult, type Outcome } from "@shared/series";
+import { isSeriesOver, seriesResult, type Outcome } from "#shared/series";
 
 import { track } from "@/lib/analytics";
 import type { GameState } from "@/state/gameReducer";

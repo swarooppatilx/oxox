@@ -1,6 +1,6 @@
 import { useId } from "react";
 
-import type { Opponent } from "@shared/moves";
+import type { Opponent } from "#shared/moves";
 
 import { OPPONENT_CHIP } from "@/copy";
 

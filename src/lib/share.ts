@@ -1,9 +1,9 @@
-import { SERIES_LENGTH } from "@shared/config";
-import type { Board, Line } from "@shared/game";
-import { GRID_PATHS, crossPaths, noughtPath, winLinePath } from "@shared/markGeometry";
-import type { Opponent } from "@shared/moves";
-import { palette } from "@shared/palette";
-import { gamesPlayed, isSeriesOver, seriesResult, type Outcome, type Series } from "@shared/series";
+import { SERIES_LENGTH } from "#shared/config";
+import type { Board, Line } from "#shared/game";
+import { GRID_PATHS, crossPaths, noughtPath, winLinePath } from "#shared/markGeometry";
+import type { Opponent } from "#shared/moves";
+import { palette } from "#shared/palette";
+import { gamesPlayed, isSeriesOver, seriesResult, type Outcome, type Series } from "#shared/series";
 
 import { OPPONENT_CHIP, opponentLabel, opponentName, shareHeadline } from "@/copy";
 

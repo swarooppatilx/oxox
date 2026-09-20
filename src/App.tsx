@@ -1,103 +1,69 @@
-import { Actions } from "@/components/Actions";
-import { Board } from "@/components/Board";
-import { Credit } from "@/components/Credit";
-import { InkFilters } from "@/components/InkFilters";
-import { Scorecard } from "@/components/Scorecard";
-import { StatusLine } from "@/components/StatusLine";
-import { StickyNote } from "@/components/StickyNote";
-import { Toast } from "@/components/Toast";
-import { useGame } from "@/hooks/useGame";
-import { useGameAnalytics } from "@/hooks/useGameAnalytics";
-import { useReducedMotion } from "@/hooks/useReducedMotion";
-import { useShare } from "@/hooks/useShare";
-import { useTearOut } from "@/hooks/useTearOut";
-import { useToast } from "@/hooks/useToast";
-import { HUMAN } from "@/players";
-import {
-  gameNumber,
-  isOpponentTurn,
-  noteOf,
-  outcomeOf,
-  showsHint,
-  stampOf,
-  statusText,
-  winLineOf,
-} from "@/state/selectors";
+import { useEffect, useState } from "react";
 
-const HOLES = 6;
+import { InkFilters } from "@/components/InkFilters";
+import type { ModeToggleProps } from "@/components/ModeToggle";
+import { OnlineGame } from "@/components/OnlineGame";
+import { SoloGame } from "@/components/SoloGame";
+import { Toast } from "@/components/Toast";
+import { useOnlineStatus } from "@/hooks/useOnlineStatus";
+import { useToast } from "@/hooks/useToast";
+
+export type GameMode = "solo" | "online";
 
 export function App() {
-  const { state, playCell, startRound } = useGame();
-  const reducedMotion = useReducedMotion();
+  const [mode, setMode] = useState<GameMode>(() =>
+    new URLSearchParams(location.search).get("room") ? "online" : "solo",
+  );
+  const [matchLive, setMatchLive] = useState(false);
+  const [pendingMode, setPendingMode] = useState<GameMode | null>(null);
   const toast = useToast();
-  const tearOut = useTearOut(state, startRound);
-  const { share, sharing } = useShare(state, toast.show);
-  useGameAnalytics(state);
+  const networkUp = useOnlineStatus();
 
-  const outcome = outcomeOf(state.board);
-  const thinking = isOpponentTurn(state);
-  const humanToMove = state.turn === HUMAN && outcome === null;
+  useEffect(() => {
+    if (pendingMode === null) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setPendingMode(null);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [pendingMode]);
+
+  const requestMode = (next: GameMode) => {
+    if (next === mode) return;
+    if (next === "online" && !networkUp) return;
+    if (mode === "online" && matchLive) {
+      setPendingMode(next);
+      return;
+    }
+    setMode(next);
+  };
+
+  const confirmSwitch = () => {
+    if (pendingMode) {
+      setMode(pendingMode);
+    }
+    setPendingMode(null);
+    setMatchLive(false);
+  };
+  const modeSwitch: ModeToggleProps = {
+    mode,
+    onlineDisabled: !networkUp,
+    onChange: requestMode,
+    confirming: pendingMode !== null,
+    confirmTarget: pendingMode ?? "solo",
+    onConfirm: confirmSwitch,
+    onDismiss: () => setPendingMode(null),
+  };
 
   return (
     <main className="desk">
       <InkFilters />
-      <div className="sr-only" role="status" aria-live="polite">
-        {state.announcement}
-      </div>
-
       <div className="sheet">
-        <section className="page" key={state.round}>
-          <div className="holes" aria-hidden="true">
-            {Array.from({ length: HOLES }, (_, i) => (
-              <span key={i} />
-            ))}
-          </div>
-
-          <header>
-            <h1>
-              Noughts <span>&amp;</span> Crosses
-            </h1>
-            <Scorecard
-              series={state.series}
-              opponent={state.opponent}
-              gameNumber={gameNumber(state)}
-            />
-          </header>
-
-          <Board
-            board={state.board}
-            round={state.round}
-            lastMove={state.lastMove}
-            winLine={winLineOf(state.board)}
-            canPlay={humanToMove}
-            thinking={thinking}
-            showHint={showsHint(state)}
-            reducedMotion={reducedMotion}
-            stamp={stampOf(state)}
-            confetti={outcome === "win"}
-            shake={outcome === "loss"}
-            onPlay={playCell}
-          />
-
-          <footer>
-            <StatusLine text={statusText(state)} thinking={thinking} opponent={state.opponent} />
-            <StickyNote
-              mood={state.lastReply?.mood ?? "gracious"}
-              warning={humanToMove && state.lastReply?.threat === true}
-              text={noteOf(state)}
-            />
-            <Actions
-              nextLabel={tearOut.label}
-              onNext={tearOut.onClick}
-              canShare={outcome !== null}
-              sharing={sharing}
-              onShare={share}
-            />
-            <Credit />
-          </footer>
-        </section>
+        <SoloGame hidden={mode !== "solo"} showToast={toast.show} modeSwitch={modeSwitch} />
+        {mode === "online" && (
+          <OnlineGame showToast={toast.show} modeSwitch={modeSwitch} onLiveChange={setMatchLive} />
+        )}
       </div>
-
       <Toast message={toast.message} />
     </main>
   );

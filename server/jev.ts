@@ -1,7 +1,7 @@
 import { TypeSafeClient, choice } from "@typesafe-ai/sdk";
-import { CELL_NAMES, legalMoves, other, type Board, type Mark } from "../shared/game.js";
-import type { Mood, MoveResult } from "../shared/moves.js";
-import { reasonFor } from "../shared/reason.js";
+import { CELL_NAMES, legalMoves, other, type Board, type Mark } from "#shared/game";
+import type { Mood, MoveResult } from "#shared/moves";
+import { reasonFor } from "#shared/reason";
 
 const MOODS: Record<Mood, string> = {
   confident: "The opponent has the upper hand or a clear plan",

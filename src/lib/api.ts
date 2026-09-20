@@ -1,5 +1,5 @@
-import type { Board } from "@shared/game";
-import type { Mood, MoveReply, Opponent, Reason } from "@shared/moves";
+import type { Board } from "#shared/game";
+import type { Mood, MoveReply, Opponent, Reason } from "#shared/moves";
 
 import { OPPONENT } from "@/players";
 

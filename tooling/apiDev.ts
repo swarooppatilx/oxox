@@ -1,5 +1,10 @@
 import { Readable } from "node:stream";
+import type { IncomingMessage } from "node:http";
+import type { Socket } from "node:net";
 import { loadEnv, type Plugin } from "vite";
+
+import { createWsApp } from "#server/realtime/app";
+import { createSocketServer } from "#server/realtime/socketServer";
 
 export function apiDevPlugin(mode: string): Plugin {
   return {
@@ -30,6 +35,24 @@ export function apiDevPlugin(mode: string): Plugin {
           res.end();
         }
       });
+
+      const app = createWsApp({ onError: (error) => console.error("[ws]", error) });
+      const wss = createSocketServer(app, { noServer: true });
+
+      const onUpgrade = (request: IncomingMessage, socket: Socket, head: Buffer) => {
+        const { pathname } = new URL(request.url ?? "/", "http://localhost");
+        if (pathname !== "/api/ws") return;
+        wss.handleUpgrade(request, socket, head, (ws) => wss.emit("connection", ws, request));
+      };
+
+      if (server.httpServer) {
+        server.httpServer.on("upgrade", onUpgrade);
+        server.httpServer.once("close", () => {
+          app.close();
+          for (const client of wss.clients) client.terminate();
+          wss.close();
+        });
+      }
     },
   };
 }

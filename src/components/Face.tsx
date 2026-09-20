@@ -1,4 +1,4 @@
-import type { Mood } from "@shared/moves";
+import type { Mood } from "#shared/moves";
 
 const MOUTHS: Record<Mood, string> = {
   confident: "M 9 22 Q 16 27 23 22",

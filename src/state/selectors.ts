@@ -1,6 +1,6 @@
-import { SERIES_LENGTH } from "@shared/config";
-import { isDraw, isOver, winnerOf, type Board, type Line } from "@shared/game";
-import { gamesPlayed, isSeriesOver, seriesResult, type Outcome } from "@shared/series";
+import { SERIES_LENGTH } from "#shared/config";
+import { isDraw, isOver, winnerOf, type Board, type Line } from "#shared/game";
+import { gamesPlayed, isSeriesOver, seriesResult, type Outcome } from "#shared/series";
 
 import {
   FIRST_NOTE,

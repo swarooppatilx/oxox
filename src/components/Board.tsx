@@ -1,6 +1,6 @@
-import { CENTER, type Board as BoardState, type Line } from "@shared/game";
-import { GRID_PATHS, winLinePath } from "@shared/markGeometry";
-import type { Outcome } from "@shared/series";
+import { CENTER, type Board as BoardState, type Line } from "#shared/game";
+import { GRID_PATHS, winLinePath } from "#shared/markGeometry";
+import type { Outcome } from "#shared/series";
 
 import { Cell } from "@/components/Cell";
 import { Confetti } from "@/components/Confetti";
@@ -19,6 +19,7 @@ interface BoardProps {
   stamp: { text: string; tone: Outcome } | null;
   confetti: boolean;
   shake: boolean;
+  youMark?: "X" | "O";
   onPlay: (index: number) => void;
 }
 
@@ -60,6 +61,7 @@ export function Board(props: BoardProps) {
               isLastMove={isLastMove}
               drawing={isLastMove && !props.reducedMotion}
               pulse={props.showHint && index === CENTER}
+              ghost={props.youMark ?? "X"}
               disabled={!props.canPlay || mark !== null}
               focusable={navigation.focusIndex === index}
               register={navigation.registerCell(index)}

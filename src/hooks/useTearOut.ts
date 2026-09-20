@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { isSeriesOver } from "@shared/series";
+import { isSeriesOver } from "#shared/series";
 
 import type { GameState } from "@/state/gameReducer";
 import { hasHumanMoved, outcomeOf } from "@/state/selectors";

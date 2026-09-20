@@ -1,5 +1,5 @@
-import { isOver, type Board, type Cell } from "@shared/game";
-import { emptySeries, isSeriesOver, type Series } from "@shared/series";
+import { isOver, type Board, type Cell } from "#shared/game";
+import { emptySeries, isSeriesOver, type Series } from "#shared/series";
 
 import { humanOpens } from "@/players";
 
