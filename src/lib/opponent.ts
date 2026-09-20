@@ -27,10 +27,16 @@ export async function chooseOpponentMove(
   board: Board,
   signal: AbortSignal,
 ): Promise<MoveReply | null> {
+  const localMove = async (): Promise<MoveReply | null> => {
+    if (!(await pause(FALLBACK_THINK_MS, signal))) return null;
+    return toReply(board, OPPONENT, minimaxMove(board, OPPONENT), "minimax");
+  };
+
+  if (typeof navigator !== "undefined" && navigator.onLine === false) return localMove();
+
   try {
     return await requestMove(board, signal);
   } catch {
-    if (!(await pause(FALLBACK_THINK_MS, signal))) return null;
-    return toReply(board, OPPONENT, minimaxMove(board, OPPONENT), "minimax");
+    return localMove();
   }
 }

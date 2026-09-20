@@ -1,3 +1,5 @@
+import { useEffect, useRef } from "react";
+
 function PencilShape() {
   return (
     <g>
@@ -30,26 +32,60 @@ const FADE_SECONDS = 0.2;
 
 export function DrawingHand({ strokes }: { strokes: readonly Stroke[] }) {
   const end = Math.max(...strokes.map((stroke) => stroke.begin + stroke.duration));
+  const handRef = useRef<SVGGElement | null>(null);
+  const pathRefs = useRef<(SVGPathElement | null)[]>([]);
+
+  useEffect(() => {
+    const start = performance.now();
+    let raf = 0;
+
+    const tick = (now: number) => {
+      const elapsed = (now - start) / 1000;
+      const group = handRef.current;
+      if (!group) return;
+
+      if (elapsed > end + FADE_SECONDS) {
+        group.style.opacity = "0";
+        return;
+      }
+
+      let point: { x: number; y: number } | null = null;
+      for (let i = 0; i < strokes.length; i++) {
+        const stroke = strokes[i];
+        if (!stroke || elapsed < stroke.begin) continue;
+        const path = pathRefs.current[i];
+        const t = (elapsed - stroke.begin) / stroke.duration;
+        if (path && t >= 0 && t <= 1) {
+          const total = path.getTotalLength();
+          point = path.getPointAtLength(Math.min(1, t) * total);
+          break;
+        }
+      }
+
+      group.style.opacity = point || elapsed < (strokes[0]?.begin ?? 0) ? "1" : "0";
+      if (point) group.setAttribute("transform", `translate(${point.x} ${point.y})`);
+
+      raf = requestAnimationFrame(tick);
+    };
+
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [strokes, end]);
 
   return (
-    <g className="hand" opacity="0">
-      <set attributeName="opacity" to="1" begin="0s" />
-      {strokes.map((stroke) => (
-        <animateMotion
+    <g ref={handRef} className="hand" opacity="0">
+      {strokes.map((stroke, i) => (
+        <path
           key={stroke.path}
-          path={stroke.path}
-          begin={`${stroke.begin}s`}
-          dur={`${stroke.duration}s`}
-          fill="freeze"
+          ref={(element) => {
+            pathRefs.current[i] = element;
+          }}
+          d={stroke.path}
+          fill="none"
+          stroke="none"
+          visibility="hidden"
         />
       ))}
-      <animate
-        attributeName="opacity"
-        to="0"
-        begin={`${end}s`}
-        dur={`${FADE_SECONDS}s`}
-        fill="freeze"
-      />
       <PencilShape />
     </g>
   );

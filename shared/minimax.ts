@@ -1,11 +1,9 @@
-import { SLIP_RATE } from "./config.js";
 import {
   isDraw,
   legalMoves,
   other,
   play,
   winnerOf,
-  winningCells,
   type Board,
   type Mark,
 } from "./game.js";
@@ -37,30 +35,40 @@ function moodFor(bestScore: number): Mood {
   return "gracious";
 }
 
-interface MinimaxOptions {
-  slipRate?: number;
-  rng?: () => number;
-}
-
-export function minimaxMove(
-  board: Board,
-  ai: Mark,
-  { slipRate = SLIP_RATE, rng = Math.random }: MinimaxOptions = {},
-): MoveResult {
+export function bestMoves(board: Board, ai: Mark): readonly number[] {
   const legal = legalMoves(board);
-  if (legal.length === 0) throw new Error("No legal moves");
+  if (legal.length === 0) return [];
 
   const scored = legal.map((index) => ({
     index,
     score: minimax(play(board, index, ai), other(ai), ai),
   }));
   const bestScore = Math.max(...scored.map((move) => move.score));
-  const best = scored.filter((move) => move.score === bestScore).map((move) => move.index);
+  return scored
+    .filter((move) => move.score === bestScore)
+    .map((move) => move.index);
+}
 
-  const canWinNow = winningCells(board, ai).length > 0;
-  const slips = !canWinNow && rng() < slipRate;
-  const pool = slips ? legal : best;
-  const index = pool[Math.floor(rng() * pool.length)] ?? legal[0] ?? 0;
+interface MinimaxOptions {
+  rng?: () => number;
+}
 
-  return { index, mood: moodFor(bestScore), reason: reasonFor(board, ai, index) };
+function pick(rng: () => number, items: readonly number[]): number {
+  if (items.length === 0) return 0;
+  return items[Math.floor(rng() * items.length) % items.length] ?? 0;
+}
+
+export function minimaxMove(
+  board: Board,
+  ai: Mark,
+  { rng = Math.random }: MinimaxOptions = {},
+): MoveResult {
+  const legal = legalMoves(board);
+  if (legal.length === 0) throw new Error("No legal moves");
+
+  const best = bestMoves(board, ai);
+  const index = best.length > 0 ? pick(rng, best) : pick(rng, legal);
+  const score = minimax(play(board, index, ai), other(ai), ai);
+
+  return { index, mood: moodFor(score), reason: reasonFor(board, ai, index) };
 }

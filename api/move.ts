@@ -2,7 +2,7 @@ import { createRateLimiter } from "../server/rateLimit.js";
 import { createSolver } from "../server/solver.js";
 import { parseMoveRequest } from "../server/validate.js";
 
-const MOVES_PER_MINUTE = 20;
+const MOVES_PER_MINUTE = 30;
 const MAX_BODY_CHARS = 2048;
 
 const solve = createSolver(process.env.TYPESAFE_API_KEY || undefined);

@@ -13,7 +13,11 @@ const NOUGHT_STROKE_SECONDS = 0.5;
 export function CrossMark({ seed, drawing }: MarkProps) {
   const [first, second] = crossPaths(seed);
   return (
-    <svg viewBox="0 0 100 100" className="mark ink-cross" aria-hidden="true">
+    <svg
+      viewBox="0 0 100 100"
+      className={`mark ink-cross${drawing ? " drawing" : ""}`}
+      aria-hidden="true"
+    >
       <path d={first} pathLength={1} className="stroke bleed first" />
       <path d={second} pathLength={1} className="stroke bleed second" />
       <path d={first} pathLength={1} className="stroke first" />
@@ -33,7 +37,11 @@ export function CrossMark({ seed, drawing }: MarkProps) {
 export function NoughtMark({ seed, drawing }: MarkProps) {
   const path = noughtPath(seed);
   return (
-    <svg viewBox="0 0 100 100" className="mark ink-nought" aria-hidden="true">
+    <svg
+      viewBox="0 0 100 100"
+      className={`mark ink-nought${drawing ? " drawing" : ""}`}
+      aria-hidden="true"
+    >
       <path d={path} pathLength={1} className="stroke bleed first" />
       <path d={path} pathLength={1} className="stroke first" />
       {drawing && <DrawingHand strokes={[{ path, begin: 0, duration: NOUGHT_STROKE_SECONDS }]} />}
