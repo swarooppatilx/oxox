@@ -1,4 +1,4 @@
-import { CHAT_MAX_LENGTH } from "#shared/multi";
+import { CHAT_MAX_LENGTH } from "@shared/multi";
 
 const BLOCKED = new Set([
   "arse",

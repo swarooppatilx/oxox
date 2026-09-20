@@ -1,6 +1,6 @@
-import { emptyBoard, other, play, type Board, type Mark } from "#shared/game";
-import type { MoveReply, Opponent } from "#shared/moves";
-import { emptySeries, isSeriesOver, recordGame, type Series } from "#shared/series";
+import { emptyBoard, other, play, type Board, type Mark } from "@shared/game";
+import type { MoveReply, Opponent } from "@shared/moves";
+import { emptySeries, isSeriesOver, recordGame, type Series } from "@shared/series";
 
 import { announceMove, announceOutcome, announceRound } from "@/copy";
 import type { SavedGame } from "@/lib/storage";

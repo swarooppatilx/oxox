@@ -1,6 +1,6 @@
 import type { Redis } from "@upstash/redis";
 
-import type { RoomState } from "#shared/multi";
+import type { RoomState } from "@shared/multi";
 
 const ROOM_TTL_SECONDS = 60 * 60 * 24;
 

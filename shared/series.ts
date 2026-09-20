@@ -1,4 +1,4 @@
-import { SERIES_LENGTH } from "#shared/config";
+import { SERIES_LENGTH } from "@shared/config";
 
 export type Outcome = "win" | "loss" | "draw";
 export type SeriesResult = "win" | "loss" | "tie";

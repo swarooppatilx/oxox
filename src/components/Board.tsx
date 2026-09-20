@@ -1,6 +1,6 @@
-import { CENTER, type Board as BoardState, type Line } from "#shared/game";
-import { GRID_PATHS, winLinePath } from "#shared/markGeometry";
-import type { Outcome } from "#shared/series";
+import { CENTER, type Board as BoardState, type Line } from "@shared/game";
+import { GRID_PATHS, winLinePath } from "@shared/markGeometry";
+import type { Outcome } from "@shared/series";
 
 import { Cell } from "@/components/Cell";
 import { Confetti } from "@/components/Confetti";

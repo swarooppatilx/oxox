@@ -1,6 +1,6 @@
-import { SERIES_LENGTH } from "#shared/config";
-import type { Opponent } from "#shared/moves";
-import type { Series } from "#shared/series";
+import { SERIES_LENGTH } from "@shared/config";
+import type { Opponent } from "@shared/moves";
+import type { Series } from "@shared/series";
 
 import { opponentLabel, opponentName } from "@/copy";
 

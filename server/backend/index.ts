@@ -1,8 +1,8 @@
-import { MemoryBus, UpstashBus, type MessageBus } from "#server/backend/bus";
-import { MemoryPresence, UpstashPresence, type Presence } from "#server/backend/presence";
-import { MemoryMatchQueue, UpstashMatchQueue, type MatchQueue } from "#server/backend/queue";
-import { getRedis } from "#server/backend/redis";
-import { MemoryRoomStore, UpstashRoomStore, type RoomStore } from "#server/backend/rooms";
+import { MemoryBus, UpstashBus, type MessageBus } from "@server/backend/bus";
+import { MemoryPresence, UpstashPresence, type Presence } from "@server/backend/presence";
+import { MemoryMatchQueue, UpstashMatchQueue, type MatchQueue } from "@server/backend/queue";
+import { getRedis } from "@server/backend/redis";
+import { MemoryRoomStore, UpstashRoomStore, type RoomStore } from "@server/backend/rooms";
 
 export interface Backend {
   rooms: RoomStore;

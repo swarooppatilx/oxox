@@ -3,7 +3,7 @@ import {
   ROOM_CODE_LENGTH,
   cleanPlayerName,
   type MultiErrorCode,
-} from "#shared/multi";
+} from "@shared/multi";
 
 export type Command =
   | { type: "hello"; secret: string; name: string; avatar: string }

@@ -1,4 +1,4 @@
-import type { ClientMessage, ServerMessage } from "#shared/multi";
+import type { ClientMessage, ServerMessage } from "@shared/multi";
 
 interface MultiSocketEvents {
   onOpen?: () => void;

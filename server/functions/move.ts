@@ -1,7 +1,7 @@
-import { isSameSite } from "#server/origin";
-import { createSharedRateLimiter } from "#server/rateLimit";
-import { createSolver } from "#server/solver";
-import { parseMoveRequest } from "#server/validate";
+import { isSameSite } from "@server/origin";
+import { createSharedRateLimiter } from "@server/rateLimit";
+import { createSolver } from "@server/solver";
+import { parseMoveRequest } from "@server/validate";
 
 const MOVES_PER_MINUTE = 30;
 const MAX_BODY_CHARS = 2048;

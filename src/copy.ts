@@ -1,13 +1,13 @@
-import { SERIES_LENGTH } from "#shared/config";
-import { CELL_NAMES, type Cell, type Mark } from "#shared/game";
-import type { Mood, Opponent, Reason } from "#shared/moves";
+import { SERIES_LENGTH } from "@shared/config";
+import { CELL_NAMES, type Cell, type Mark } from "@shared/game";
+import type { Mood, Opponent, Reason } from "@shared/moves";
 import {
   isSeriesOver,
   seriesResult,
   type Outcome,
   type Series,
   type SeriesResult,
-} from "#shared/series";
+} from "@shared/series";
 
 const OPPONENT_NAMES: Record<Opponent, { full: string; short: string; label: string }> = {
   jev: { full: "Jev", short: "Jev", label: "Jev" },

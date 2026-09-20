@@ -5,7 +5,7 @@ import globals from "globals";
 import tseslint from "typescript-eslint";
 
 export default tseslint.config(
-  { ignores: ["dist"] },
+  { ignores: ["dist", "build", ".vercel"] },
   js.configs.recommended,
   tseslint.configs.strict,
   {
@@ -18,7 +18,7 @@ export default tseslint.config(
     },
   },
   {
-    files: ["api/**", "server/**", "tooling/**", "*.config.{js,ts}"],
+    files: ["api/**", "server/**", "*.config.{js,ts}"],
     languageOptions: { globals: globals.node },
   },
   {

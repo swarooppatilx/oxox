@@ -1,6 +1,6 @@
-import { SERIES_LENGTH } from "#shared/config";
-import type { Mark } from "#shared/game";
-import { gamesPlayed, type Series } from "#shared/series";
+import { SERIES_LENGTH } from "@shared/config";
+import type { Mark } from "@shared/game";
+import { gamesPlayed, type Series } from "@shared/series";
 
 interface MultiScorecardProps {
   series: Series;

@@ -1,4 +1,4 @@
-import type { Opponent } from "#shared/moves";
+import type { Opponent } from "@shared/moves";
 
 import { OpponentChip } from "@/components/OpponentChip";
 import { ThinkingPencil } from "@/components/Pencil";

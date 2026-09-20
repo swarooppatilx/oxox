@@ -14,9 +14,13 @@
     "verbatimModuleSyntax": true,
     "erasableSyntaxOnly": true,
     "forceConsistentCasingInFileNames": true,
-    "paths": { "@/*": ["./src/*"] },
+    "paths": {
+      "@/*": ["./src/*"],
+      "@shared/*": ["./shared/*"],
+      "@server/*": ["./server/*"]
+    },
     "noEmit": true,
     "skipLibCheck": true
   },
-  "include": ["src", "shared", "server", "api", "tooling", "vite.config.ts"]
+  "include": ["src", "shared", "server", "vite.config.ts"]
 }

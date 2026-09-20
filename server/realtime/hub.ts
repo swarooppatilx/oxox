@@ -1,5 +1,5 @@
-import type { MessageBus, Unsubscribe } from "#server/backend/bus";
-import type { ServerMessage } from "#shared/multi";
+import type { MessageBus, Unsubscribe } from "@server/backend/bus";
+import type { ServerMessage } from "@shared/multi";
 
 export interface Receiver {
   receive(message: ServerMessage): void;

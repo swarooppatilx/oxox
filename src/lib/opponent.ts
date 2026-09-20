@@ -1,6 +1,6 @@
-import type { Board } from "#shared/game";
-import { minimaxMove } from "#shared/minimax";
-import { toReply, type MoveReply } from "#shared/moves";
+import type { Board } from "@shared/game";
+import { minimaxMove } from "@shared/minimax";
+import { toReply, type MoveReply } from "@shared/moves";
 
 import { requestMove } from "@/lib/api";
 import { OPPONENT } from "@/players";

@@ -1,19 +1,19 @@
 import { randomUUID } from "node:crypto";
 
-import { createBackend, type Backend } from "#server/backend/index";
-import { publicIdOf, type Identity } from "#server/identity";
-import { moderateChatText } from "#server/moderation";
-import { createRateLimiter } from "#server/rateLimit";
-import { createHub, type Receiver } from "#server/realtime/hub";
-import { parseCommand, type Command } from "#server/realtime/protocol";
-import { createRoomService, type RoomResult } from "#server/realtime/roomService";
+import { createBackend, type Backend } from "@server/backend/index";
+import { publicIdOf, type Identity } from "@server/identity";
+import { moderateChatText } from "@server/moderation";
+import { createRateLimiter } from "@server/rateLimit";
+import { createHub, type Receiver } from "@server/realtime/hub";
+import { parseCommand, type Command } from "@server/realtime/protocol";
+import { createRoomService, type RoomResult } from "@server/realtime/roomService";
 import {
   HEARTBEAT_MS,
   PONG_TIMEOUT_MS,
   PRESENCE_MS,
   type MultiErrorCode,
   type ServerMessage,
-} from "#shared/multi";
+} from "@shared/multi";
 
 export interface WsConnection {
   send(data: string): void;

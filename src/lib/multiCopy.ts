@@ -1,4 +1,4 @@
-import type { MultiErrorCode } from "#shared/multi";
+import type { MultiErrorCode } from "@shared/multi";
 
 const COPY: Record<MultiErrorCode, string> = {
   bad_message: "Something went wrong. Give it another go.",

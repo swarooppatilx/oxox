@@ -1,4 +1,4 @@
-import { isOver, isPlausible, type Board, type Cell, type Mark } from "#shared/game";
+import { isOver, isPlausible, type Board, type Cell, type Mark } from "@shared/game";
 
 interface MoveRequest {
   board: Board;

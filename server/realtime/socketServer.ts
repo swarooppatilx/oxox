@@ -1,8 +1,8 @@
 import type { IncomingMessage } from "node:http";
 import { WebSocketServer, type ServerOptions, type WebSocket } from "ws";
 
-import { isSameSite } from "#server/origin";
-import type { WsApp, WsConnection } from "#server/realtime/app";
+import { isSameSite } from "@server/origin";
+import type { WsApp, WsConnection } from "@server/realtime/app";
 
 const MAX_MESSAGE_BYTES = 2048;
 

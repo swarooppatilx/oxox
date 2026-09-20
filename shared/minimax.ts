@@ -1,6 +1,6 @@
-import { isDraw, legalMoves, other, play, winnerOf, type Board, type Mark } from "#shared/game";
-import type { Mood, MoveResult } from "#shared/moves";
-import { reasonFor } from "#shared/reason";
+import { isDraw, legalMoves, other, play, winnerOf, type Board, type Mark } from "@shared/game";
+import type { Mood, MoveResult } from "@shared/moves";
+import { reasonFor } from "@shared/reason";
 
 const scores = new Map<string, number>();
 

@@ -1,4 +1,4 @@
-import type { MultiErrorCode, RoomState } from "#shared/multi";
+import type { MultiErrorCode, RoomState } from "@shared/multi";
 
 type SocketStatus = "idle" | "connecting" | "open" | "reconnecting" | "closed";
 type Pending = "join" | "create" | "resume";

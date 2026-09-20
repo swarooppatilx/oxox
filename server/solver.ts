@@ -1,8 +1,8 @@
-import type { Board, Mark } from "#shared/game";
-import { bestMoves, minimaxMove } from "#shared/minimax";
-import { toReply, type MoveReply } from "#shared/moves";
-import { reasonFor } from "#shared/reason";
-import { createAskJev } from "#server/jev";
+import type { Board, Mark } from "@shared/game";
+import { bestMoves, minimaxMove } from "@shared/minimax";
+import { toReply, type MoveReply } from "@shared/moves";
+import { reasonFor } from "@shared/reason";
+import { createAskJev } from "@server/jev";
 
 const JEV_TIMEOUT_MS = 2500;
 const JEV_COOLDOWN_MS = 15_000;

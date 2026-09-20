@@ -1,4 +1,4 @@
-import type { Mood } from "#shared/moves";
+import type { Mood } from "@shared/moves";
 
 import { Face } from "@/components/Face";
 

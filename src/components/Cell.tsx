@@ -1,6 +1,6 @@
 import type { KeyboardEvent, Ref } from "react";
 
-import type { Cell as CellValue } from "#shared/game";
+import type { Cell as CellValue } from "@shared/game";
 
 import { CrossMark, NoughtMark } from "@/components/Marks";
 import { cellLabel } from "@/copy";

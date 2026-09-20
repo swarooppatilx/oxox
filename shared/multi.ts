@@ -1,5 +1,5 @@
-import type { Board, Mark } from "#shared/game";
-import type { Series } from "#shared/series";
+import type { Board, Mark } from "@shared/game";
+import type { Series } from "@shared/series";
 
 export const ROOM_CODE_LENGTH = 6;
 export const ROOM_CODE_ALPHABET = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";

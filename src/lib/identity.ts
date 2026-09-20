@@ -1,4 +1,4 @@
-import { PLAYER_NAME_MAX, cleanPlayerName } from "#shared/multi";
+import { PLAYER_NAME_MAX, cleanPlayerName } from "@shared/multi";
 
 export interface MultiProfile {
   secret: string;

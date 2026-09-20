@@ -1,6 +1,6 @@
 import { useRef, useState, type KeyboardEvent } from "react";
 
-import { CENTER } from "#shared/game";
+import { CENTER } from "@shared/game";
 
 const SIZE = 3;
 const ARROWS: Record<string, readonly [dx: number, dy: number]> = {

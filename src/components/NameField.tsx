@@ -1,4 +1,4 @@
-import { PLAYER_NAME_MAX, draftPlayerName } from "#shared/multi";
+import { PLAYER_NAME_MAX, draftPlayerName } from "@shared/multi";
 
 import { MultiAvatar } from "@/components/MultiAvatar";
 

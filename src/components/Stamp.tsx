@@ -1,4 +1,4 @@
-import type { Outcome } from "#shared/series";
+import type { Outcome } from "@shared/series";
 
 export function Stamp({ text, tone }: { text: string; tone: Outcome }) {
   return (

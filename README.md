@@ -42,7 +42,7 @@ you need Fluid compute (the default on new projects) and an Upstash Redis databa
 
 | Variable                   | What for                                                    |
 | -------------------------- | ----------------------------------------------------------- |
-| `TYPESAFE_API_KEY`         | Jev's API key                                |
+| `TYPESAFE_API_KEY`         | Jev's API key                                               |
 | `UPSTASH_REDIS_REST_URL`   | Upstash Redis for Online mode. In-memory when unset         |
 | `UPSTASH_REDIS_REST_TOKEN` | Upstash Redis token                                         |
 | `SITE_URL`                 | Public URL for social cards. Only needed on a custom domain |

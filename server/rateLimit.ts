@@ -1,4 +1,4 @@
-import { getRedis } from "#server/backend/redis";
+import { getRedis } from "@server/backend/redis";
 
 const WINDOW_MS = 60_000;
 const MAX_TRACKED_CLIENTS = 5000;

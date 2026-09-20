@@ -1,5 +1,5 @@
-import { SERIES_LENGTH } from "#shared/config";
-import { emptyBoard, isOver, other, play, winnerOf, type Mark } from "#shared/game";
+import { SERIES_LENGTH } from "@shared/config";
+import { emptyBoard, isOver, other, play, winnerOf, type Mark } from "@shared/game";
 import {
   CHAT_HISTORY,
   DISCONNECT_GRACE_MS,
@@ -13,9 +13,9 @@ import {
   type MultiErrorCode,
   type MultiPlayer,
   type RoomState,
-} from "#shared/multi";
-import { emptySeries, gamesPlayed, recordGame } from "#shared/series";
-import type { Identity } from "#server/identity";
+} from "@shared/multi";
+import { emptySeries, gamesPlayed, recordGame } from "@shared/series";
+import type { Identity } from "@server/identity";
 
 export type Outcome =
   | { ok: true; change: boolean; remove?: boolean }

@@ -1,8 +1,8 @@
 import { randomUUID } from "node:crypto";
 
-import type { Backend } from "#server/backend/index";
-import type { Identity } from "#server/identity";
-import type { Hub } from "#server/realtime/hub";
+import type { Backend } from "@server/backend/index";
+import type { Identity } from "@server/identity";
+import type { Hub } from "@server/realtime/hub";
 import {
   addChat,
   applyMove,
@@ -16,8 +16,8 @@ import {
   requestRematch,
   runDue,
   type Outcome,
-} from "#server/realtime/roomLogic";
-import type { MultiErrorCode, RoomState } from "#shared/multi";
+} from "@server/realtime/roomLogic";
+import type { MultiErrorCode, RoomState } from "@shared/multi";
 
 const MAX_CONFLICT_RETRIES = 5;
 const CODE_ATTEMPTS = 5;

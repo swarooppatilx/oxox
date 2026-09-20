@@ -1,4 +1,4 @@
-import { play, winningCells, type Board, type Mark } from "#shared/game";
+import { play, winningCells, type Board, type Mark } from "@shared/game";
 
 export type Mood = "confident" | "nervous" | "smug" | "gracious";
 

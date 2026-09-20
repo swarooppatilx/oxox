@@ -1,6 +1,6 @@
 import type { Redis } from "@upstash/redis";
 
-import type { Identity as QueueEntry } from "#server/identity";
+import type { Identity as QueueEntry } from "@server/identity";
 
 const QUEUE_TTL_MS = 30_000;
 

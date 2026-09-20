@@ -1,6 +1,6 @@
 import { useEffect, useId, useRef, useState } from "react";
 
-import { CHAT_MAX_LENGTH, type ChatMessage, type MultiPlayer } from "#shared/multi";
+import { CHAT_MAX_LENGTH, type ChatMessage, type MultiPlayer } from "@shared/multi";
 
 import { MultiAvatar } from "@/components/MultiAvatar";
 

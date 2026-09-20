@@ -1,9 +1,9 @@
 import { useEffect, useEffectEvent, useRef, useState, type ReactNode } from "react";
 
-import { SERIES_LENGTH } from "#shared/config";
-import { isDraw, winnerOf } from "#shared/game";
-import { cleanPlayerName, opponentOf, playerOf, type RoomState } from "#shared/multi";
-import { gamesPlayed, seriesResult, type Outcome } from "#shared/series";
+import { SERIES_LENGTH } from "@shared/config";
+import { isDraw, winnerOf } from "@shared/game";
+import { cleanPlayerName, opponentOf, playerOf, type RoomState } from "@shared/multi";
+import { gamesPlayed, seriesResult, type Outcome } from "@shared/series";
 
 import { Board } from "@/components/Board";
 import { Chat } from "@/components/Chat";

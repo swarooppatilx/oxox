@@ -32,7 +32,7 @@
     }
   ],
   "functions": {
-    "api/ws.ts": {
+    "api/ws.js": {
       "maxDuration": 300
     }
   }

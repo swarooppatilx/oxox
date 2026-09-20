@@ -5,7 +5,7 @@ import {
   type ClientMessage,
   type RoomState,
   type ServerMessage,
-} from "#shared/multi";
+} from "@shared/multi";
 
 import { avatarFor, loadProfile, saveProfile, type MultiProfile } from "@/lib/identity";
 import { MultiSocket } from "@/lib/multiSocket";
